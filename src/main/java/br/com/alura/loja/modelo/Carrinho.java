@@ -64,8 +64,8 @@ public class Carrinho {
 	}
 
 	public void trocaQuantidade(Produto produto) {
-		for (Iterator iterator = produtos.iterator(); iterator.hasNext();) {
-			Produto p = (Produto) iterator.next();
+		for (Iterator<Produto> iterator = produtos.iterator(); iterator.hasNext();) {
+			Produto p = iterator.next();
 			if(p.getId() == produto.getId()) {
 				p.setQuantidade(produto.getQuantidade());
 				return;
@@ -75,6 +75,10 @@ public class Carrinho {
 	
 	public List<Produto> getProdutos() {
 		return produtos;
+	}
+
+	public String toXML() {
+		return new XStream().toXML(this);
 	}
 
 }

@@ -15,7 +15,9 @@ public class ClientTest {
 		
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://www.mocky.io");
-		String conteudo = target.path("/v2/52aaf5bbee7ba8c60329fb7b").request().get(String.class);
-		Assert.assertTrue(conteudo.contains("Rua"));
+		String conteudoHTML = target.path("/v2/52aaf5bbee7ba8c60329fb7b").request().get(String.class);
+		String conteudoXML = target.path("/v2/52aaf5deee7ba8c70329fb7d").request().get(String.class);
+		Assert.assertTrue(conteudoHTML.contains("Rua"));
+		Assert.assertTrue(conteudoXML.contains("Videogame 4"));
 	}
 }
